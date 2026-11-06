@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Visoría Internacional EC10 Talentos · Bogotá y Medellín 2026</title>
+<meta name="description" content="Visoría de fútbol para jugadores de 11 a 25 años en Bogotá (4 y 5 de diciembre) y Medellín (7 y 8 de diciembre), en alianza con EC10 Talentos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..800;1,8..60,300..800&amp;display=swap">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;background:#050d22;color:#f4efe3;font-family:"Source Serif 4",Georgia,serif;-webkit-font-smoothing:antialiased}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+*,*::before,*::after{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+a{color:#f2d27a;text-decoration:none}
+a:hover{color:#e3b23c}
+::selection{background:#e3b23c;color:#050d22}
+:focus-visible{outline:2px solid #e3b23c;outline-offset:3px}
+option{background:#0a1a3f;color:#f4efe3}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;overflow-x:clip;background:#050d22;color:#f4efe3;font-family:'Source Serif 4',Georgia,serif;min-height:100vh">
+
+<a href="#inscripcion" onClick="{{ navTo }}" style="position:absolute;left:16px;top:-60px;z-index:200;background:#e3b23c;color:#050d22;padding:10px 16px;font-weight:600" style-focus="top:16px">Saltar a la inscripción</a>
+
+<sc-if value="{{ showIntro }}" hint-placeholder-val="{{ true }}">
+<div data-intro aria-hidden="true" style="position:fixed;inset:0;z-index:120;background:#050d22;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px">
+  <img data-intro-crest src="assets/ec10-crest.png" alt="" style="width:132px;height:132px;border-radius:50%;clip-path:circle(48%)">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+    <div style="overflow:hidden"><div data-intro-text style="font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:#9aa6c4">EC10 Talentos presenta</div></div>
+    <div style="overflow:hidden"><div data-intro-text style="font-size:clamp(28px,4vw,44px);font-style:italic;color:#f4efe3">Visoría Internacional 2026</div></div>
+  </div>
+  <div style="width:min(280px,60vw);height:1px;background:#1b3a85"><div data-intro-bar style="height:1px;background:#e3b23c;transform-origin:0 50%"></div></div>
+</div>
+</sc-if>
+
+<div data-progress aria-hidden="true" style="position:fixed;top:0;left:0;right:0;height:2px;background:#e3b23c;transform:scaleX(0);transform-origin:0 50%;z-index:70"></div>
+
+<header data-nav style="position:fixed;top:0;left:0;right:0;z-index:60;background:linear-gradient(180deg,rgba(5,13,34,.92),rgba(5,13,34,0))">
+  <nav aria-label="Principal" style="max-width:1440px;margin:0 auto;padding:18px clamp(20px,4vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#inicio" onClick="{{ navTo }}" style="display:flex;align-items:center;gap:12px;color:#f4efe3">
+      <img src="assets/ec10-crest.png" alt="EC10 Talentos" style="width:44px;height:44px;border-radius:50%;clip-path:circle(48%)">
+      <span style="font-size:17px;font-weight:600;letter-spacing:.02em">EC10 Talentos</span>
+    </a>
+    <div class="hidden md:flex" style="align-items:center;gap:32px;font-size:15px">
+      <a href="#sedes" onClick="{{ navTo }}" style="color:#c9d0e2" style-hover="color:#f2d27a">Sedes y fechas</a>
+      <a href="#proceso" onClick="{{ navTo }}" style="color:#c9d0e2" style-hover="color:#f2d27a">Cómo funciona</a>
+      <a href="#padres" onClick="{{ navTo }}" style="color:#c9d0e2" style-hover="color:#f2d27a">Para padres</a>
+      <a href="#preguntas" onClick="{{ navTo }}" style="color:#c9d0e2" style-hover="color:#f2d27a">Preguntas</a>
+    </div>
+    <a href="#inscripcion" onClick="{{ navTo }}" style="padding:12px 20px;background:#e3b23c;color:#050d22;font-size:15px;font-weight:600;border-radius:2px;white-space:nowrap" style-hover="background:#f2d27a;color:#050d22">Reservar cupo</a>
+  </nav>
+</header>
+
+<main id="contenido">
+
+<section id="inicio" data-hero style="position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:132px clamp(20px,4vw,56px) 40px;overflow:hidden">
+  <div data-light aria-hidden="true" style="position:absolute;width:70vw;height:70vw;left:-20vw;top:-30vw;background:radial-gradient(circle,rgba(27,58,133,.55),rgba(5,13,34,0) 65%);pointer-events:none"></div>
+  <div data-light aria-hidden="true" style="position:absolute;width:55vw;height:55vw;right:-15vw;top:-10vw;background:radial-gradient(circle,rgba(227,178,60,.16),rgba(5,13,34,0) 62%);pointer-events:none"></div>
+  <div data-hero-inner class="grid lg:grid-cols-12" style="position:relative;width:100%;max-width:1440px;margin:0 auto;column-gap:48px;row-gap:40px;align-items:end">
+    <div class="lg:col-span-7" style="display:flex;flex-direction:column;gap:28px">
+      <p data-hero-fade style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Visoría internacional de fútbol · Diciembre 2026</p>
+      <h1 style="font-size:clamp(54px,9.4vw,156px);line-height:.92;letter-spacing:-.035em;font-weight:600">
+        <span style="display:block;overflow:hidden;padding-bottom:.06em"><span data-hero-line style="display:block">Que te vean</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.08em"><span data-hero-line style="display:block;font-style:italic;font-weight:400;color:#e3b23c">los que deciden.</span></span>
+      </h1>
+      <p data-hero-fade style="max-width:560px;font-size:clamp(18px,1.5vw,21px);line-height:1.55;color:#c9d0e2;text-wrap:pretty">Cuatro días de pruebas en Bogotá y Medellín, en alianza con EC10 Talentos. Si tienes entre 11 y 25 años y sueñas con jugar en el exterior, este es el lugar donde tu fútbol se mide con ojos profesionales.</p>
+      <div data-hero-fade style="display:flex;flex-wrap:wrap;gap:14px">
+        <a href="#inscripcion" onClick="{{ navTo }}" style="padding:18px 30px;background:#e3b23c;color:#050d22;font-size:17px;font-weight:600;border-radius:2px" style-hover="background:#f2d27a;color:#050d22">Quiero mi cupo</a>
+        <a href="#sedes" onClick="{{ navTo }}" style="padding:18px 30px;color:#f4efe3;font-size:17px;border:1px solid rgba(244,239,227,.35);border-radius:2px" style-hover="border-color:#e3b23c;color:#f2d27a">Ver fechas</a>
+      </div>
+    </div>
+    <div class="hidden lg:block lg:col-span-5">
+      <div data-hero-media style="position:relative;aspect-ratio:4/5;width:100%;max-height:62vh;margin-left:auto;overflow:hidden;border-radius:2px">
+        <image-slot id="hero-atleta" shape="rect" placeholder="Foto: atleta en acción (vertical)"></image-slot>
+        <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,13,34,0) 55%,rgba(5,13,34,.7));pointer-events:none"></div>
+      </div>
+    </div>
+    <div data-hero-fade class="lg:col-span-12 grid grid-cols-1 md:grid-cols-3" style="border-top:3px solid #e3b23c;box-shadow:0 4px 0 -3px #e3b23c inset;padding-top:20px;gap:20px">
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9aa6c4">Bogotá</span>
+        <span style="font-size:26px;font-weight:600">4 y 5 de diciembre</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9aa6c4">Medellín</span>
+        <span style="font-size:26px;font-weight:600">7 y 8 de diciembre</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px" aria-live="off">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9aa6c4">Faltan para Bogotá</span>
+        <span style="font-size:26px;font-weight:600;font-variant-numeric:tabular-nums;color:#f2d27a">{{ cd.d }} días · {{ cd.h }}:{{ cd.m }}:{{ cd.s }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div aria-hidden="true" style="overflow:hidden;padding:36px 0;border-top:1px solid rgba(244,239,227,.08);border-bottom:1px solid rgba(244,239,227,.08)">
+  <div data-marquee style="display:flex;width:max-content;font-size:clamp(40px,6vw,88px);font-style:italic;line-height:1;white-space:nowrap;color:#1b3a85">
+    <div style="display:flex;gap:48px;padding-right:48px"><span>Bogotá</span><span style="color:#e3b23c">✦</span><span>04—05 dic</span><span style="color:#e3b23c">✦</span><span>Medellín</span><span style="color:#e3b23c">✦</span><span>07—08 dic</span><span style="color:#e3b23c">✦</span><span>Del barrio al mundo</span><span style="color:#e3b23c">✦</span></div>
+    <div style="display:flex;gap:48px;padding-right:48px"><span>Bogotá</span><span style="color:#e3b23c">✦</span><span>04—05 dic</span><span style="color:#e3b23c">✦</span><span>Medellín</span><span style="color:#e3b23c">✦</span><span>07—08 dic</span><span style="color:#e3b23c">✦</span><span>Del barrio al mundo</span><span style="color:#e3b23c">✦</span></div>
+  </div>
+</div>
+
+<section data-manifesto aria-label="Por qué existe esta visoría" style="padding:clamp(96px,16vh,200px) clamp(20px,4vw,56px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">El talento no es el problema</p>
+    <p style="font-size:clamp(30px,4.3vw,62px);line-height:1.18;letter-spacing:-.015em;display:flex;flex-wrap:wrap;column-gap:.26em">
+      <sc-for list="{{ words }}" as="w" hint-placeholder-count="40"><span data-word>{{ w }}</span></sc-for>
+    </p>
+    <p data-reveal style="font-size:clamp(30px,4.3vw,62px);line-height:1.18;letter-spacing:-.015em;font-style:italic;color:#e3b23c">Esta visoría existe para que te vean.</p>
+  </div>
+</section>
+
+<section data-reveal aria-label="Alianza" style="padding:0 clamp(20px,4vw,56px) clamp(96px,14vh,180px)">
+  <div class="grid grid-cols-1 lg:grid-cols-12" style="max-width:1200px;margin:0 auto;gap:40px;align-items:center">
+    <div class="lg:col-span-4" style="display:flex;align-items:center;gap:20px">
+      <img data-crest-spin src="assets/ec10-crest.png" alt="Escudo EC10 Talentos" style="width:120px;height:120px;border-radius:50%;clip-path:circle(48%)">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9aa6c4">En alianza con</span><span style="font-size:28px;font-weight:600">EC10 Talentos</span></div>
+    </div>
+    <p class="lg:col-span-8" style="font-size:clamp(19px,1.6vw,23px);line-height:1.6;color:#c9d0e2;text-wrap:pretty">Los jugadores que se destaquen en la visoría pueden entrar al proceso de seguimiento de EC10 Talentos, con acompañamiento para acceder a oportunidades en clubes internacionales. No es un evento más: es la primera conversación seria sobre tu carrera.</p>
+  </div>
+</section>
+
+<section id="sedes" data-cities aria-label="Sedes y fechas" style="position:relative;background:#0a1a3f">
+  <div data-track class="flex flex-col lg:flex-row" style="width:100%">
+    <div class="lg:w-[38vw] lg:h-screen" style="flex-shrink:0;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:clamp(72px,12vh,120px) clamp(20px,4vw,56px)">
+      <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Dos ciudades · Cuatro días</p>
+      <h2 style="font-size:clamp(44px,5.4vw,84px);line-height:.98;letter-spacing:-.03em;font-weight:600">Elige tu <span style="font-style:italic;font-weight:400;color:#e3b23c">cancha.</span></h2>
+      <p style="max-width:420px;font-size:19px;line-height:1.55;color:#c9d0e2">Mismo formato y mismos evaluadores en ambas sedes. Inscríbete en la ciudad que te quede más cerca.</p>
+    </div>
+    <article class="lg:w-[82vw] lg:h-screen" style="position:relative;flex-shrink:0;min-height:88svh;overflow:hidden;display:flex;align-items:flex-end">
+      <div style="position:absolute;inset:0"><image-slot id="ciudad-bogota" shape="rect" placeholder="Foto: Bogotá / estadio o cancha"></image-slot></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,13,34,.25),rgba(5,13,34,.92) 78%);pointer-events:none"></div>
+      <div style="position:relative;width:100%;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:20px;pointer-events:none">
+        <span style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Sede 01</span>
+        <h3 data-city-name style="font-size:clamp(76px,15vw,240px);line-height:.85;letter-spacing:-.045em;font-weight:700">Bogotá</h3>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid rgba(244,239,227,.25);padding-top:20px">
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:clamp(24px,2.4vw,34px);font-weight:600">Viernes 4 y sábado 5 de diciembre</span><span style="font-size:17px;color:#c9d0e2">Sede y horario se confirman por WhatsApp al inscribirte</span></div>
+          <button type="button" onClick="{{ pickBogota }}" style="pointer-events:auto;padding:16px 26px;background:#e3b23c;color:#050d22;border:0;border-radius:2px;font:600 16px 'Source Serif 4',Georgia,serif;cursor:pointer" style-hover="background:#f2d27a">Inscribirme en Bogotá</button>
+        </div>
+      </div>
+    </article>
+    <article class="lg:w-[82vw] lg:h-screen" style="position:relative;flex-shrink:0;min-height:88svh;overflow:hidden;display:flex;align-items:flex-end">
+      <div style="position:absolute;inset:0"><image-slot id="ciudad-medellin" shape="rect" placeholder="Foto: Medellín / estadio o cancha"></image-slot></div>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,13,34,.25),rgba(5,13,34,.92) 78%);pointer-events:none"></div>
+      <div style="position:relative;width:100%;padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;gap:20px;pointer-events:none">
+        <span style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Sede 02</span>
+        <h3 data-city-name style="font-size:clamp(76px,15vw,240px);line-height:.85;letter-spacing:-.045em;font-weight:700">Medellín</h3>
+        <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;border-top:1px solid rgba(244,239,227,.25);padding-top:20px">
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:clamp(24px,2.4vw,34px);font-weight:600">Lunes 7 y martes 8 de diciembre</span><span style="font-size:17px;color:#c9d0e2">Sede y horario se confirman por WhatsApp al inscribirte</span></div>
+          <button type="button" onClick="{{ pickMedellin }}" style="pointer-events:auto;padding:16px 26px;background:#e3b23c;color:#050d22;border:0;border-radius:2px;font:600 16px 'Source Serif 4',Georgia,serif;cursor:pointer" style-hover="background:#f2d27a">Inscribirme en Medellín</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="proceso" aria-label="Cómo funciona" style="padding:clamp(96px,16vh,200px) clamp(20px,4vw,56px)">
+  <div class="grid grid-cols-1 lg:grid-cols-12" style="max-width:1200px;margin:0 auto;gap:48px">
+    <div class="lg:col-span-5">
+      <div style="position:sticky;top:120px;display:flex;flex-direction:column;gap:20px">
+        <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Cómo funciona</p>
+        <h2 data-reveal style="font-size:clamp(40px,4.6vw,72px);line-height:1;letter-spacing:-.03em;font-weight:600">Cuatro pasos entre tú y <span style="font-style:italic;font-weight:400;color:#e3b23c">la vitrina.</span></h2>
+      </div>
+    </div>
+    <ol data-steps class="lg:col-span-7" style="position:relative;list-style:none;margin:0;padding:0 0 0 40px;display:flex;flex-direction:column;gap:64px">
+      <div aria-hidden="true" style="position:absolute;left:0;top:8px;bottom:8px;width:1px;background:rgba(244,239,227,.15)"><div data-steps-line style="width:1px;height:100%;background:#e3b23c;transform-origin:50% 0"></div></div>
+      <li data-reveal style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;color:#e3b23c;font-variant-numeric:tabular-nums">01</span><h3 style="font-size:clamp(26px,2.4vw,34px);font-weight:600">Preinscripción</h3><p style="font-size:19px;line-height:1.6;color:#c9d0e2;max-width:520px">Completa el formulario en dos minutos y elige ciudad y fecha. Los cupos por categoría son limitados.</p></li>
+      <li data-reveal style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;color:#e3b23c;font-variant-numeric:tabular-nums">02</span><h3 style="font-size:clamp(26px,2.4vw,34px);font-weight:600">Confirmación</h3><p style="font-size:19px;line-height:1.6;color:#c9d0e2;max-width:520px">Te escribimos por WhatsApp con la sede, el horario de tu categoría, el valor y lo que debes llevar.</p></li>
+      <li data-reveal style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;color:#e3b23c;font-variant-numeric:tabular-nums">03</span><h3 style="font-size:clamp(26px,2.4vw,34px);font-weight:600">Evaluación en cancha</h3><p style="font-size:19px;line-height:1.6;color:#c9d0e2;max-width:520px">Pruebas técnicas y físicas, seguidas de juego real observado por evaluadores. Técnica, lectura de juego, intensidad y actitud.</p></li>
+      <li data-reveal style="display:flex;flex-direction:column;gap:10px"><span style="font-size:15px;color:#e3b23c;font-variant-numeric:tabular-nums">04</span><h3 style="font-size:clamp(26px,2.4vw,34px);font-weight:600">Siguiente paso</h3><p style="font-size:19px;line-height:1.6;color:#c9d0e2;max-width:520px">Los jugadores destacados son contactados por EC10 Talentos para iniciar el proceso de seguimiento hacia oportunidades internacionales.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-label="Categorías" style="padding:0 clamp(20px,4vw,56px) clamp(96px,16vh,200px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Categorías</p>
+      <h2 data-reveal style="font-size:clamp(40px,4.6vw,72px);line-height:1;letter-spacing:-.03em;font-weight:600">De 11 a 25 años. <span style="font-style:italic;font-weight:400;color:#9aa6c4">Con o sin club.</span></h2>
+    </div>
+    <div role="list" style="display:flex;flex-direction:column;border-top:1px solid rgba(244,239,227,.15)">
+      <div role="listitem" data-reveal class="grid grid-cols-12" style="gap:16px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(244,239,227,.15);transition:padding .4s" style-hover="padding-left:16px;color:#f2d27a"><span class="col-span-5 md:col-span-3" style="font-size:clamp(28px,3.4vw,48px);font-weight:600">Sub-13</span><span class="col-span-7 md:col-span-4" style="font-size:19px;color:#c9d0e2">11 a 13 años</span><span class="hidden md:block md:col-span-5" style="font-size:17px;color:#9aa6c4;text-align:right">Nacidos 2013 – 2015</span></div>
+      <div role="listitem" data-reveal class="grid grid-cols-12" style="gap:16px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(244,239,227,.15);transition:padding .4s" style-hover="padding-left:16px;color:#f2d27a"><span class="col-span-5 md:col-span-3" style="font-size:clamp(28px,3.4vw,48px);font-weight:600">Sub-15</span><span class="col-span-7 md:col-span-4" style="font-size:19px;color:#c9d0e2">14 y 15 años</span><span class="hidden md:block md:col-span-5" style="font-size:17px;color:#9aa6c4;text-align:right">Nacidos 2011 – 2012</span></div>
+      <div role="listitem" data-reveal class="grid grid-cols-12" style="gap:16px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(244,239,227,.15);transition:padding .4s" style-hover="padding-left:16px;color:#f2d27a"><span class="col-span-5 md:col-span-3" style="font-size:clamp(28px,3.4vw,48px);font-weight:600">Sub-17</span><span class="col-span-7 md:col-span-4" style="font-size:19px;color:#c9d0e2">16 y 17 años</span><span class="hidden md:block md:col-span-5" style="font-size:17px;color:#9aa6c4;text-align:right">Nacidos 2009 – 2010</span></div>
+      <div role="listitem" data-reveal class="grid grid-cols-12" style="gap:16px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(244,239,227,.15);transition:padding .4s" style-hover="padding-left:16px;color:#f2d27a"><span class="col-span-5 md:col-span-3" style="font-size:clamp(28px,3.4vw,48px);font-weight:600">Sub-20</span><span class="col-span-7 md:col-span-4" style="font-size:19px;color:#c9d0e2">18 a 20 años</span><span class="hidden md:block md:col-span-5" style="font-size:17px;color:#9aa6c4;text-align:right">Nacidos 2006 – 2008</span></div>
+      <div role="listitem" data-reveal class="grid grid-cols-12" style="gap:16px;align-items:baseline;padding:26px 0;border-bottom:1px solid rgba(244,239,227,.15);transition:padding .4s" style-hover="padding-left:16px;color:#f2d27a"><span class="col-span-5 md:col-span-3" style="font-size:clamp(28px,3.4vw,48px);font-weight:600">Mayores</span><span class="col-span-7 md:col-span-4" style="font-size:19px;color:#c9d0e2">21 a 25 años</span><span class="hidden md:block md:col-span-5" style="font-size:17px;color:#9aa6c4;text-align:right">Nacidos 2001 – 2005</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="padres" aria-label="Para padres y acudientes" style="background:#f4efe3;color:#050d22;padding:clamp(96px,16vh,200px) clamp(20px,4vw,56px)">
+  <div class="grid grid-cols-1 lg:grid-cols-12" style="max-width:1200px;margin:0 auto;gap:48px">
+    <div class="lg:col-span-5" style="display:flex;flex-direction:column;gap:24px">
+      <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#7a5a0e">Para padres y acudientes</p>
+      <h2 data-reveal style="font-size:clamp(40px,4.6vw,72px);line-height:1;letter-spacing:-.03em;font-weight:600">Usted confía el sueño. <span style="font-style:italic;font-weight:400;color:#1b3a85">Nosotros lo cuidamos.</span></h2>
+      <p data-reveal style="font-size:19px;line-height:1.6;color:#3a4256;max-width:440px">Sabemos que detrás de cada jugador hay una familia que madruga, paga uniformes y cree. Por eso la visoría se rige por cuatro compromisos.</p>
+    </div>
+    <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2" style="column-gap:40px;row-gap:48px">
+      <div data-reveal style="display:flex;flex-direction:column;gap:12px"><span style="font-size:clamp(44px,4vw,60px);font-style:italic;line-height:1;color:#1b3a85">i.</span><h3 style="font-size:24px;font-weight:600">Menores siempre acompañados</h3><p style="font-size:18px;line-height:1.6;color:#3a4256">Todo jugador menor de 18 años asiste con su acudiente y autorización firmada.</p></div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:12px"><span style="font-size:clamp(44px,4vw,60px);font-style:italic;line-height:1;color:#1b3a85">ii.</span><h3 style="font-size:24px;font-weight:600">Ambiente seguro</h3><p style="font-size:18px;line-height:1.6;color:#3a4256">Jornada supervisada por personal del evento, con hidratación y pausas en cada bloque de pruebas.</p></div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:12px"><span style="font-size:clamp(44px,4vw,60px);font-style:italic;line-height:1;color:#1b3a85">iii.</span><h3 style="font-size:24px;font-weight:600">Todo por escrito</h3><p style="font-size:18px;line-height:1.6;color:#3a4256">Sede, horario, valor y siguientes pasos se comunican con claridad antes del evento. Sin letra pequeña.</p></div>
+      <div data-reveal style="display:flex;flex-direction:column;gap:12px"><span style="font-size:clamp(44px,4vw,60px);font-style:italic;line-height:1;color:#1b3a85">iv.</span><h3 style="font-size:24px;font-weight:600">Honestidad, no promesas</h3><p style="font-size:18px;line-height:1.6;color:#3a4256">Una visoría es una puerta, no una garantía. Evaluamos con criterio profesional y le decimos la verdad.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="preguntas" aria-label="Preguntas frecuentes" style="padding:clamp(96px,16vh,200px) clamp(20px,4vw,56px)">
+  <div class="grid grid-cols-1 lg:grid-cols-12" style="max-width:1200px;margin:0 auto;gap:48px">
+    <div class="lg:col-span-4" style="display:flex;flex-direction:column;gap:20px">
+      <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Preguntas frecuentes</p>
+      <h2 data-reveal style="font-size:clamp(40px,4.6vw,64px);line-height:1;letter-spacing:-.03em;font-weight:600">Antes de <span style="font-style:italic;font-weight:400;color:#e3b23c">entrar a la cancha.</span></h2>
+    </div>
+    <div class="lg:col-span-8" style="display:flex;flex-direction:column;border-top:1px solid rgba(244,239,227,.15)">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(244,239,227,.15)">
+          <h3 style="margin:0"><button type="button" onClick="{{ f.toggle }}" aria-expanded="{{ f.expanded }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;background:none;border:0;color:#f4efe3;text-align:left;font:600 clamp(20px,1.8vw,24px)/1.35 'Source Serif 4',Georgia,serif;cursor:pointer" style-hover="color:#f2d27a"><span>{{ f.q }}</span><span aria-hidden="true" style="font-size:28px;font-weight:300;color:#e3b23c;flex-shrink:0">{{ f.sign }}</span></button></h3>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p style="padding:0 0 28px;font-size:18px;line-height:1.65;color:#c9d0e2;max-width:640px">{{ f.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="inscripcion" aria-label="Inscripción" style="position:relative;background:#0a1a3f;padding:clamp(96px,16vh,200px) clamp(20px,4vw,56px);overflow:hidden">
+  <div data-light aria-hidden="true" style="position:absolute;width:60vw;height:60vw;right:-20vw;bottom:-30vw;background:radial-gradient(circle,rgba(227,178,60,.14),rgba(10,26,63,0) 62%);pointer-events:none"></div>
+  <div class="grid grid-cols-1 lg:grid-cols-12" style="position:relative;max-width:1200px;margin:0 auto;gap:56px">
+    <div class="lg:col-span-5" style="display:flex;flex-direction:column;gap:24px">
+      <p style="font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e3b23c">Preinscripción gratuita</p>
+      <h2 data-cta-title style="font-size:clamp(48px,6vw,96px);line-height:.95;letter-spacing:-.035em;font-weight:600">Tu cupo empieza <span style="font-style:italic;font-weight:400;color:#e3b23c">aquí.</span></h2>
+      <p style="font-size:19px;line-height:1.6;color:#c9d0e2;max-width:440px">Llena tus datos y te contactamos por WhatsApp con toda la información. Si eres menor de edad, hazlo junto a tu papá, mamá o acudiente.</p>
+      <div style="display:flex;flex-direction:column;gap:4px;padding-top:12px">
+        <span style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#9aa6c4">Primer día en Bogotá</span>
+        <span style="font-size:clamp(36px,3.6vw,52px);font-weight:600;font-variant-numeric:tabular-nums;color:#f2d27a">{{ cd.d }}d {{ cd.h }}h {{ cd.m }}m</span>
+      </div>
+    </div>
+    <div class="lg:col-span-7">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="display:flex;flex-direction:column;gap:20px;padding-top:12px">
+          <img src="assets/ec10-crest.png" alt="" style="width:88px;height:88px;border-radius:50%;clip-path:circle(48%)">
+          <h3 style="font-size:clamp(34px,3.6vw,52px);line-height:1.05;font-weight:600">¡Listo, {{ firstName }}! <span style="font-style:italic;font-weight:400;color:#e3b23c">Ya estás en la lista.</span></h3>
+          <p style="font-size:19px;line-height:1.6;color:#c9d0e2;max-width:520px">Te escribiremos al WhatsApp {{ form.whatsapp }} con la sede, el horario y el valor para {{ cityLabel }}. Mientras tanto: entrena, descansa y llega con hambre.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onSubmit }}" novalidate="novalidate" style="display:flex;flex-direction:column;gap:30px">
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:12px">
+            <legend style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#9aa6c4;margin-bottom:12px;padding:0">Ciudad y fecha</legend>
+            <div class="grid grid-cols-1 sm:grid-cols-2" style="gap:12px">
+              <button type="button" onClick="{{ selBogota }}" aria-pressed="{{ isBog }}" style="{{ bogStyle }}">Bogotá<br><span style="font-size:15px;font-weight:400;opacity:.85">4 y 5 de diciembre</span></button>
+              <button type="button" onClick="{{ selMedellin }}" aria-pressed="{{ isMed }}" style="{{ medStyle }}">Medellín<br><span style="font-size:15px;font-weight:400;opacity:.85">7 y 8 de diciembre</span></button>
+            </div>
+          </fieldset>
+          <div class="grid grid-cols-1 md:grid-cols-2" style="column-gap:28px;row-gap:30px">
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;letter-spacing:.06em;color:#9aa6c4">Nombre del jugador
+              <input name="nombre" value="{{ form.nombre }}" onChange="{{ onField }}" autocomplete="name" required="required" style="background:transparent;border:0;border-bottom:1px solid rgba(244,239,227,.35);padding:10px 0;color:#f4efe3;font:400 20px 'Source Serif 4',Georgia,serif;outline:none" style-focus="border-bottom-color:#e3b23c">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;letter-spacing:.06em;color:#9aa6c4">Edad
+              <input name="edad" type="number" min="11" max="25" inputmode="numeric" value="{{ form.edad }}" onChange="{{ onField }}" required="required" style="background:transparent;border:0;border-bottom:1px solid rgba(244,239,227,.35);padding:10px 0;color:#f4efe3;font:400 20px 'Source Serif 4',Georgia,serif;outline:none" style-focus="border-bottom-color:#e3b23c">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;letter-spacing:.06em;color:#9aa6c4">Posición
+              <select name="posicion" value="{{ form.posicion }}" onChange="{{ onField }}" style="background:transparent;border:0;border-bottom:1px solid rgba(244,239,227,.35);padding:10px 0;color:#f4efe3;font:400 20px 'Source Serif 4',Georgia,serif;outline:none" style-focus="border-bottom-color:#e3b23c">
+                <option value="">Selecciona</option>
+                <option>Arquero</option>
+                <option>Defensa central</option>
+                <option>Lateral</option>
+                <option>Volante de marca</option>
+                <option>Volante creativo</option>
+                <option>Extremo</option>
+                <option>Delantero</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:8px;font-size:14px;letter-spacing:.06em;color:#9aa6c4">WhatsApp
+              <input name="whatsapp" type="tel" value="{{ form.whatsapp }}" onChange="{{ onField }}" autocomplete="tel" placeholder="+57 300 000 0000" required="required" style="background:transparent;border:0;border-bottom:1px solid rgba(244,239,227,.35);padding:10px 0;color:#f4efe3;font:400 20px 'Source Serif 4',Georgia,serif;outline:none" style-focus="border-bottom-color:#e3b23c">
+            </label>
+            <sc-if value="{{ isMinor }}" hint-placeholder-val="{{ false }}">
+              <label class="md:col-span-2" style="display:flex;flex-direction:column;gap:8px;font-size:14px;letter-spacing:.06em;color:#f2d27a">Nombre del acudiente (obligatorio para menores de 18)
+                <input name="acudiente" value="{{ form.acudiente }}" onChange="{{ onField }}" style="background:transparent;border:0;border-bottom:1px solid #e3b23c;padding:10px 0;color:#f4efe3;font:400 20px 'Source Serif 4',Georgia,serif;outline:none">
+              </label>
+            </sc-if>
+          </div>
+          <label style="display:flex;gap:14px;align-items:flex-start;font-size:16px;line-height:1.5;color:#c9d0e2;cursor:pointer">
+            <input name="consent" type="checkbox" checked="{{ form.consent }}" onChange="{{ onField }}" style="width:22px;height:22px;margin-top:2px;accent-color:#e3b23c;flex-shrink:0">
+            Acepto ser contactado por EC10 Talentos sobre la visoría y el tratamiento de mis datos.
+          </label>
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="font-size:17px;color:#f2d27a">{{ error }}</p></sc-if>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px">
+            <button type="submit" style="padding:20px 36px;background:#e3b23c;color:#050d22;border:0;border-radius:2px;font:600 18px 'Source Serif 4',Georgia,serif;cursor:pointer" style-hover="background:#f2d27a" style-active="background:#a87b14;color:#f4efe3">Reservar mi cupo</button>
+            <span style="font-size:15px;color:#9aa6c4">Cupos limitados por categoría.</span>
+          </div>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:56px clamp(20px,4vw,56px) 40px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px;font-size:15px;color:#9aa6c4">
+    <div style="display:flex;align-items:center;gap:14px">
+      <img src="assets/ec10-crest.png" alt="EC10 Talentos" style="width:48px;height:48px;border-radius:50%;clip-path:circle(48%)">
+      <span>Visoría Internacional · Bogotá y Medellín · Diciembre 2026</span>
+    </div>
+    <span>© 2026 EC10 Talentos</span>
+  </div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = {
+    now: Date.now(), introGone: false, sent: false, error: '', faq: 0,
+    form: { nombre: '', edad: '', posicion: '', whatsapp: '', acudiente: '', ciudad: '', consent: false }
+  };
+
+  componentDidMount() {
+    this.tick = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this.failsafe = setTimeout(() => { if (!this.ready) this.setState({ introGone: true }); }, 8000);
+    let tries = 0;
+    this.poll = setInterval(() => {
+      tries++;
+      if (window.gsap && window.ScrollTrigger && window.Lenis && this.rootRef.current) { clearInterval(this.poll); this.init(); }
+      else if (tries > 160) { clearInterval(this.poll); this.setState({ introGone: true }); }
+    }, 50);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.tick); clearInterval(this.poll); clearTimeout(this.failsafe);
+    if (this.mm) this.mm.revert();
+    if (this.ctx) this.ctx.revert();
+    if (this._raf && window.gsap) window.gsap.ticker.remove(this._raf);
+    if (this.lenis) this.lenis.destroy();
+    window.removeEventListener('load', this._refresh);
+  }
+
+  init() {
+    this.ready = true;
+    const { gsap, ScrollTrigger, Lenis } = window;
+    const root = this.rootRef.current;
+    gsap.registerPlugin(ScrollTrigger);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduce) {
+      this.lenis = new Lenis({ lerp: 0.085, smoothWheel: true });
+      this.lenis.on('scroll', ScrollTrigger.update);
+      this._raf = (t) => this.lenis.raf(t * 1000);
+      gsap.ticker.add(this._raf);
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    this.ctx = gsap.context(() => {
+      if (reduce) { this.setState({ introGone: true }); return; }
+      this.lenis.stop();
+      window.scrollTo(0, 0);
+      gsap.timeline({ defaults: { ease: 'expo.out' } })
+        .from('[data-intro-crest]', { scale: 0.6, autoAlpha: 0, rotate: -12, duration: 1.3 })
+        .from('[data-intro-text]', { yPercent: 110, duration: 1, stagger: 0.1 }, '-=0.8')
+        .fromTo('[data-intro-bar]', { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'power3.inOut' }, '-=0.6')
+        .to('[data-intro]', { yPercent: -100, duration: 1.1, ease: 'expo.inOut' }, '+=0.1')
+        .from('[data-hero-line]', { yPercent: 115, duration: 1.4, stagger: 0.12 }, '-=0.55')
+        .from('[data-hero-media]', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut' }, '<')
+        .from('[data-hero-fade]', { autoAlpha: 0, y: 28, duration: 1.1, stagger: 0.08 }, '<0.3')
+        .add(() => { this.setState({ introGone: true }); this.lenis && this.lenis.start(); }, '<');
+
+      gsap.to('[data-progress]', { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
+
+      const nav = root.querySelector('[data-nav]');
+      ScrollTrigger.create({
+        start: 'top -140', end: 'max',
+        onUpdate: (s) => gsap.to(nav, { yPercent: s.direction === 1 ? -110 : 0, duration: 0.5, ease: 'power3.out', overwrite: true }),
+        onLeaveBack: () => gsap.to(nav, { yPercent: 0, duration: 0.4, overwrite: true })
+      });
+
+      gsap.utils.toArray('[data-light]').forEach((el, i) => {
+        gsap.to(el, { xPercent: i % 2 ? -12 : 14, yPercent: i % 2 ? 10 : -8, duration: 9 + i * 2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+      });
+
+      const heroST = { trigger: '[data-hero]', start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to('[data-hero-inner] h1', { yPercent: -30, ease: 'none', scrollTrigger: heroST });
+      gsap.to('[data-hero-media]', { yPercent: 14, ease: 'none', scrollTrigger: { ...heroST } });
+
+      const mq = gsap.to('[data-marquee]', { xPercent: -50, ease: 'none', duration: 38, repeat: -1 });
+      ScrollTrigger.create({
+        onUpdate: (s) => {
+          const v = Math.min(Math.abs(s.getVelocity()) / 400, 5);
+          gsap.to(mq, { timeScale: (s.direction === 1 ? 1 : -1) * (1 + v), duration: 0.25, overwrite: true });
+          gsap.to(mq, { timeScale: s.direction === 1 ? 1 : -1, duration: 1.2, delay: 0.25, overwrite: false });
+        }
+      });
+
+      gsap.fromTo('[data-word]', { opacity: 0.14 }, {
+        opacity: 1, stagger: 0.05, ease: 'none',
+        scrollTrigger: { trigger: '[data-manifesto]', start: 'top 72%', end: 'bottom 62%', scrub: true }
+      });
+
+      gsap.to('[data-crest-spin]', { rotate: 360, ease: 'none', scrollTrigger: { trigger: '[data-crest-spin]', start: 'top bottom', end: 'bottom top', scrub: 1 } });
+
+      gsap.utils.toArray('[data-reveal]').forEach((el) => {
+        gsap.from(el, { y: 48, autoAlpha: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+      });
+
+      gsap.fromTo('[data-steps-line]', { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '[data-steps]', start: 'top 65%', end: 'bottom 65%', scrub: true } });
+
+      gsap.from('[data-cta-title]', { scale: 0.86, autoAlpha: 0.2, transformOrigin: '0% 100%', ease: 'none', scrollTrigger: { trigger: '#inscripcion', start: 'top 85%', end: 'top 35%', scrub: true } });
+    }, root);
+
+    this.mm = gsap.matchMedia(root);
+    this.mm.add({ desk: '(min-width: 1024px)', reduce: '(prefers-reduced-motion: reduce)' }, (c) => {
+      const { desk, reduce: r } = c.conditions;
+      if (r) return;
+      if (desk) {
+        const track = root.querySelector('[data-track]');
+        const dist = () => track.scrollWidth - window.innerWidth;
+        const tw = gsap.to(track, {
+          x: () => -dist(), ease: 'none',
+          scrollTrigger: { trigger: '[data-cities]', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 }
+        });
+        gsap.utils.toArray('[data-city-name]').forEach((el) => {
+          gsap.from(el, { xPercent: 35, ease: 'none', scrollTrigger: { trigger: el, containerAnimation: tw, start: 'left right', end: 'left 35%', scrub: true } });
+        });
+      } else {
+        gsap.utils.toArray('[data-city-name]').forEach((el) => {
+          gsap.from(el, { yPercent: 40, autoAlpha: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+        });
+      }
+    });
+
+    ScrollTrigger.sort();
+    this._refresh = () => ScrollTrigger.refresh();
+    window.addEventListener('load', this._refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (this.ready) ScrollTrigger.refresh(); });
+  }
+
+  scrollToId(id) {
+    const root = this.rootRef.current;
+    const t = root && root.querySelector(id);
+    if (!t) return;
+    if (this.lenis) this.lenis.scrollTo(t, { offset: 0, duration: 1.6 });
+    else window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY, behavior: 'auto' });
+  }
+
+  setCity(c, go) {
+    this.setState((s) => ({ form: { ...s.form, ciudad: c }, error: '' }));
+    if (go) this.scrollToId('#inscripcion');
+  }
+
+  cityStyle(on) {
+    return {
+      padding: '18px 20px', textAlign: 'left', cursor: 'pointer', borderRadius: 2,
+      font: "600 22px/1.3 'Source Serif 4',Georgia,serif",
+      background: on ? '#e3b23c' : 'transparent', color: on ? '#050d22' : '#f4efe3',
+      border: on ? '1px solid #e3b23c' : '1px solid rgba(244,239,227,.3)'
+    };
+  }
+
+  renderVals() {
+    const { form, now, faq } = this.state;
+    const target = new Date('2026-12-04T07:00:00-05:00').getTime();
+    let diff = Math.max(0, target - now);
+    const pad = (n) => String(n).padStart(2, '0');
+    const d = Math.floor(diff / 864e5); diff -= d * 864e5;
+    const h = Math.floor(diff / 36e5); diff -= h * 36e5;
+    const m = Math.floor(diff / 6e4); diff -= m * 6e4;
+    const sec = Math.floor(diff / 1e3);
+
+    const faqData = [
+      ['¿Quién puede participar?', 'Futbolistas nacidos entre 2001 y 2015 (11 a 25 años), con o sin club. No se requiere experiencia previa en visorías.'],
+      ['¿Cuánto cuesta?', 'La preinscripción es gratuita. El valor de participación y lo que incluye se envía por WhatsApp junto con la sede y el horario de tu categoría.'],
+      ['¿Qué debo llevar?', 'Guayos, canilleras, ropa deportiva, hidratación y documento de identidad. Los menores de 18 años deben llegar con su acudiente y la autorización firmada.'],
+      ['¿Ser seleccionado garantiza un contrato?', 'No. La visoría identifica jugadores con potencial. Los destacados inician un proceso de seguimiento con EC10 Talentos hacia oportunidades en clubes internacionales, que depende del desarrollo de cada jugador.'],
+      ['¿Cuántos días debo asistir?', 'La sede y los horarios por categoría se confirman al inscribirte. Te indicaremos con anticipación en qué día y bloque te corresponde presentarte.']
+    ];
+    const edad = parseInt(form.edad, 10);
+    const isMinor = !isNaN(edad) && edad < 18;
+
+    return {
+      rootRef: this.rootRef,
+      showIntro: !this.state.introGone,
+      cd: { d: pad(d), h: pad(h), m: pad(m), s: pad(sec) },
+      words: 'Cada año, miles de jugadores con talento se quedan sin una oportunidad. No por falta de nivel, sino por falta de vitrina: nadie los vio jugar. Dos ciudades, cuatro días y una mirada profesional puesta en ti.'.split(' '),
+      faqs: faqData.map(([q, a], i) => ({
+        q, a, open: faq === i, expanded: faq === i ? 'true' : 'false', sign: faq === i ? '−' : '+',
+        toggle: () => this.setState((s) => ({ faq: s.faq === i ? -1 : i }))
+      })),
+      navTo: (e) => { e.preventDefault(); this.scrollToId(e.currentTarget.getAttribute('href')); },
+      pickBogota: () => this.setCity('bogota', true),
+      pickMedellin: () => this.setCity('medellin', true),
+      selBogota: () => this.setCity('bogota'),
+      selMedellin: () => this.setCity('medellin'),
+      isBog: form.ciudad === 'bogota' ? 'true' : 'false',
+      isMed: form.ciudad === 'medellin' ? 'true' : 'false',
+      bogStyle: this.cityStyle(form.ciudad === 'bogota'),
+      medStyle: this.cityStyle(form.ciudad === 'medellin'),
+      form,
+      isMinor,
+      onField: (e) => {
+        const { name, type, checked, value } = e.target;
+        this.setState((s) => ({ form: { ...s.form, [name]: type === 'checkbox' ? checked : value }, error: '' }));
+      },
+      onSubmit: (e) => {
+        e.preventDefault();
+        let error = '';
+        if (!form.ciudad) error = 'Elige la ciudad: Bogotá o Medellín.';
+        else if (!form.nombre.trim()) error = 'Escribe el nombre del jugador.';
+        else if (isNaN(edad) || edad < 11 || edad > 25) error = 'La visoría es para jugadores de 11 a 25 años.';
+        else if (form.whatsapp.replace(/\D/g, '').length < 10) error = 'Revisa el número de WhatsApp (mínimo 10 dígitos).';
+        else if (isMinor && !form.acudiente.trim()) error = 'Para menores de 18 años, escribe el nombre del acudiente.';
+        else if (!form.consent) error = 'Debes aceptar ser contactado para continuar.';
+        if (error) return this.setState({ error });
+        this.setState({ sent: true, error: '' });
+      },
+      error: this.state.error,
+      hasError: !!this.state.error,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      firstName: form.nombre.trim().split(' ')[0],
+      cityLabel: form.ciudad === 'medellin' ? 'Medellín (7 y 8 de diciembre)' : 'Bogotá (4 y 5 de diciembre)'
+    };
+  }
+}
+</script>
+</body>
+</html>
